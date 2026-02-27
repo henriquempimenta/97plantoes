@@ -1,0 +1,5 @@
+{
+  "name": "TaskMaster Pro",
+  "description": "A personal task manager built with a monorepo architecture, React, Tailwind CSS, and TanStack Query.",
+  "requestFramePermissions": []
+}

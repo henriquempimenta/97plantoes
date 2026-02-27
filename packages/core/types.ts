@@ -1,0 +1,20 @@
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  color: string;
+}
+
+export interface Task {
+  id: string;
+  title: string;
+  description?: string;
+  completed: boolean;
+  categoryId: string;
+  createdAt: string;
+}
