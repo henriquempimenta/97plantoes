@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 
 // --- Brand Colors ---
-// Ciano Plantonista: #55BCCD (30%)
-// Vermelho Médico:   #E13444 (10%)
-// Branco Hospitalar: #FFFFFF (60%)
+// Ciano Plantonista (Light/Teal): #32B3C5
+// Ciano Plantonista (Dark/Teal): #0D8F9A
+// Azul Escuro (Navy):   #0A2540
+// Branco Hospitalar: #FFFFFF
 // Azul:              #1C5A90 (auxiliary)
+
+import {
+  UserPlus,
+  Search,
+  MessageCircle,
+  CreditCard,
+  ShieldCheck,
+  FileText,
+  Map,
+  CalendarDays,
+  Lock,
+  MessageSquare
+} from 'lucide-react';
 
 // --- Icons ---
 const CheckIcon: React.FC = () => (
@@ -23,12 +37,12 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className="flex justify-between items-center text-base font-semibold gap-4">
-        <span style={{ color: '#1C5A90' }} className="group-hover:opacity-80 transition-opacity leading-snug">
+        <span style={{ color: '#0A2540' }} className="group-hover:opacity-80 transition-opacity leading-snug">
           {question}
         </span>
         <span
           className="text-xl font-mono flex-shrink-0 transition-transform duration-300"
-          style={{ color: '#55BCCD', transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+          style={{ color: '#32B3C5', transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
         >
           +
         </span>
@@ -42,41 +56,43 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
   );
 };
 
-const StatBox: React.FC<{ value: string; label: string }> = ({ value, label }) => (
+const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; desc: string }> = ({ icon, title, desc }) => (
   <div
-    className="p-6 rounded-2xl text-center border"
-    style={{ borderColor: '#55BCCD22', background: 'linear-gradient(135deg, #f0fafc 0%, #e8f7fa 100%)' }}
+    className="rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
+    style={{
+      background: 'rgba(255, 255, 255, 0.65)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      border: '1px solid rgba(255, 255, 255, 0.8)',
+      boxShadow: '0 8px 32px 0 rgba(50, 179, 197, 0.07)'
+    }}
   >
-    <div className="text-3xl font-bold mb-1" style={{ color: '#1C5A90' }}>{value}</div>
-    <div className="text-xs uppercase tracking-wider font-semibold" style={{ color: '#55BCCD' }}>{label}</div>
-  </div>
-);
-
-const FeatureCard: React.FC<{ icon: string; title: string; desc: string }> = ({ icon, title, desc }) => (
-  <div
-    className="rounded-2xl p-7 border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white"
-    style={{ borderColor: '#e5e7eb' }}
-  >
+    <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/0 pointer-events-none rounded-3xl" />
     <div
-      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
-      style={{ background: 'linear-gradient(135deg, #55BCCD22 0%, #1C5A9022 100%)' }}
+      className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-5 relative z-10"
+      style={{
+        background: '#EAF8FA',
+        color: '#0D8F9A'
+      }}
     >
       {icon}
     </div>
-    <h3 className="text-lg font-bold mb-2" style={{ color: '#1C5A90' }}>{title}</h3>
-    <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{desc}</p>
+    <h3 className="text-lg font-bold mb-2 relative z-10" style={{ color: '#0A2540' }}>{title}</h3>
+    <p className="text-sm leading-relaxed relative z-10" style={{ color: '#6b7280' }}>{desc}</p>
   </div>
 );
 
-const StepCard: React.FC<{ n: number; title: string; desc: string }> = ({ n, title, desc }) => (
-  <div className="flex flex-col items-center text-center p-6">
+const StepCard: React.FC<{ icon: React.ReactNode; title: string; desc: string }> = ({ icon, title, desc }) => (
+  <div className="flex flex-col items-center text-center px-4 relative z-10">
     <div
-      className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-xl mb-5 shadow-lg"
-      style={{ background: 'linear-gradient(135deg, #55BCCD 0%, #1C5A90 100%)' }}
+      className="w-16 h-16 rounded-full flex items-center justify-center text-white mb-5 shadow-lg relative"
+      style={{ background: 'linear-gradient(135deg, #32B3C5 0%, #0D8F9A 100%)' }}
     >
-      {n}
+      {/* Outer glow */}
+      <div className="absolute inset-0 rounded-full animate-pulse opacity-30 blur-md bg-[#32B3C5]"></div>
+      <div className="relative z-10">{icon}</div>
     </div>
-    <h4 className="font-bold text-lg mb-2" style={{ color: '#1C5A90' }}>{title}</h4>
+    <h4 className="font-bold text-lg mb-2" style={{ color: '#0A2540' }}>{title}</h4>
     <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{desc}</p>
   </div>
 );
@@ -194,7 +210,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
   const marqueeItems = [...marqueeKeywords, ...marqueeKeywords, ...marqueeKeywords];
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans selection:bg-cyan-100 selection:text-cyan-900" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div className="min-h-screen w-full overflow-x-hidden bg-white text-gray-800 font-sans selection:bg-cyan-100 selection:text-cyan-900" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -207,40 +223,55 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
           width: max-content;
           animation: marquee 35s linear infinite;
         }
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
         .btn-primary {
-          background: linear-gradient(135deg, #55BCCD 0%, #1C5A90 100%);
+          background: linear-gradient(135deg, #32B3C5 0%, #0D8F9A 100%);
           color: white;
-          font-weight: 700;
+          font-weight: 600;
           padding: 14px 32px;
-          border-radius: 12px;
+          border-radius: 9999px;
           border: none;
           cursor: pointer;
           font-size: 1rem;
           transition: all 0.2s ease;
-          box-shadow: 0 4px 20px rgba(85,188,205,0.35);
-          display: inline-block;
+          box-shadow: 0 4px 14px rgba(50, 179, 197, 0.3);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
           text-decoration: none;
         }
         .btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 28px rgba(85,188,205,0.45);
+          box-shadow: 0 6px 20px rgba(50, 179, 197, 0.4);
         }
         .btn-secondary {
           background: white;
-          color: #1C5A90;
-          font-weight: 700;
-          padding: 14px 32px;
-          border-radius: 12px;
-          border: 2px solid #55BCCD;
+          color: #0A2540;
+          font-weight: 600;
+          padding: 12px 28px;
+          border-radius: 9999px;
+          border: 1.5px solid #E5E7EB;
           cursor: pointer;
           font-size: 1rem;
           transition: all 0.2s ease;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
           text-decoration: none;
         }
         .btn-secondary:hover {
-          background: #f0fafc;
-          transform: translateY(-2px);
+          background: #F8FAFC;
+          border-color: #CBD5E1;
         }
         .nav-link {
           color: #4b5563;
@@ -249,19 +280,22 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
           text-decoration: none;
           transition: color 0.2s;
         }
-        .nav-link:hover { color: #1C5A90; }
+        .nav-link:hover { color: #0A2540; }
 
         .trust-badge {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #f0fafc;
-          border: 1px solid #55BCCD44;
+          background: white;
+          border: 1px solid #E5E7EB;
           border-radius: 999px;
           padding: 6px 16px;
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           font-weight: 600;
-          color: #1C5A90;
+          color: #0A2540;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
       `}</style>
 
@@ -294,51 +328,59 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
       </nav>
 
       {/* ── Hero ── */}
-      <section className="pt-32 pb-20 px-4" style={{ background: 'linear-gradient(180deg, #f0fafc 0%, #ffffff 100%)' }}>
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-          {/* Badge */}
-          <div className="trust-badge mb-8">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
-            O aplicativo para médicos do Brasil 🩺
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden bg-[#EBF7F9]">
+        {/* Abstract Background Design */}
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-30 pointer-events-none">
+          <div className="absolute right-[-10%] top-[-10%] w-[500px] h-[500px] rounded-full bg-[#32B3C5] mix-blend-multiply blur-3xl" />
+          <div className="absolute right-[20%] top-[40%] w-[400px] h-[400px] rounded-full bg-[#EBF7F9] mix-blend-multiply blur-3xl leading-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          {/* Left Column: Content */}
+          <div className="flex flex-col items-start text-left">
+            <div className="trust-badge mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#32B3C5] flex-shrink-0 animate-pulse"></span>
+              O APLICATIVO PARA MÉDICOS DO BRASIL 🛡️
+            </div>
+
+            <h1
+              className="text-5xl lg:text-6xl xl:text-[4rem] font-black tracking-tight mb-6 leading-[1.1]"
+              style={{ color: '#0A2540' }}
+            >
+              A plataforma de{' '}
+              <br className="hidden lg:block" />
+              <span style={{ color: '#32B3C5' }}>
+                plantões médicos
+              </span>{' '}
+              <br className="hidden lg:block" />
+              do Brasil
+            </h1>
+
+            <p className="text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-medium" style={{ color: '#4b5563' }}>
+              <strong style={{ color: '#0A2540' }}>Conectando a SAÚDE do BRASIL.</strong>{' '}
+              Oferte, encontre e troque plantões com segurança — comunidade exclusiva de médicos verificados, pagamento garantido e chat privado.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <a href="#download" className="btn-primary w-full sm:w-auto">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2L12 16M12 16L8 12M12 16L16 12M4 20L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                Baixar o App
+              </a>
+              <a href="#como-funciona" className="btn-secondary w-full sm:w-auto">
+                Como funciona
+              </a>
+            </div>
           </div>
 
-          {/* H1 */}
-          <h1
-            className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.08]"
-            style={{ color: '#1C5A90' }}
-          >
-            A plataforma de{' '}
-            <span style={{ color: '#55BCCD' }}>plantões</span>{' '}
-            <br className="hidden md:block" />
-            médicos do Brasil
-          </h1>
+          {/* Right Column: Image */}
+          <div className="relative flex justify-center lg:justify-end animate-float">
+            {/* Glass panel effect behind the image */}
+            <div className="absolute inset-4 sm:inset-10 bg-white/20 backdrop-blur-3xl rounded-[3rem] border border-white/40 shadow-2xl -z-10 transform rotate-3 scale-105" />
 
-          <p className="text-xl mb-10 max-w-2xl leading-relaxed" style={{ color: '#4b5563' }}>
-            <em style={{ color: '#1C5A90', fontStyle: 'normal', fontWeight: 600 }}>Conectando a Saúde do Brasil.</em>{' '}
-            Oferte, encontre e troque plantões com segurança — comunidade exclusiva de médicos verificados, pagamento garantido e chat privado.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <a href="#download" className="btn-primary text-center">⬇ Baixar o App</a>
-            <a href="#como-funciona" className="btn-secondary text-center">Como funciona</a>
-          </div>
-
-          {/* Social proof */}
-          <div className="flex items-center gap-3 text-sm" style={{ color: '#6b7280' }}>
-            <span>✅ Verificação de CRM</span>
-            <span style={{ color: '#d1d5db' }}>|</span>
-            <span>🔒 Pagamento seguro</span>
-            <span style={{ color: '#d1d5db' }}>|</span>
-            <span>💬 Chat privado</span>
-          </div>
-
-          {/* Hero image */}
-          <div className="mt-20 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border" style={{ borderColor: '#55BCCD33' }}>
             <img
               src="./doctor_using_the_app.jpg"
               alt="Médico utilizando o aplicativo 97plantões"
-              className="w-full h-auto object-cover"
+              className="w-full max-w-[500px] h-auto object-contain rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-white/50"
             />
           </div>
         </div>
@@ -363,74 +405,48 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
         </div>
       </section>
 
-      {/* ── Como funciona ── */}
-      <section id="como-funciona" className="py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#55BCCD' }}>
-              Simples e rápido
-            </p>
-            <h2 className="text-4xl font-black" style={{ color: '#1C5A90' }}>Como funciona</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 relative">
-            {/* Connecting line (desktop) */}
-            <div
-              className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 z-0"
-              style={{ background: 'linear-gradient(90deg, #55BCCD44 0%, #55BCCD 50%, #55BCCD44 100%)' }}
-            />
-            {[
-              { n: 1, title: 'Cadastre-se como médico', desc: 'Crie seu perfil. Verificamos seu CRM para manter a comunidade segura e confiável.' },
-              { n: 2, title: 'Oferte ou candidate-se', desc: 'Publique o plantão que deseja passar ou encontre plantões disponíveis na sua região.' },
-              { n: 3, title: 'Converse pelo chat', desc: 'Alinhe detalhes com o outro profissional em um chat privado e seguro antes de confirmar.' },
-              { n: 4, title: 'Pagamento garantido', desc: 'O valor é pago pelo médico que oferta e repassado automaticamente ao médico que assumiu após realizar o plantão.' },
-            ].map(s => <div key={s.n} className="relative z-10"><StepCard {...s} /></div>)}
-          </div>
-        </div>
-      </section>
-
       {/* ── Funcionalidades ── */}
       <section
         id="funcionalidades"
-        className="py-24 px-4"
-        style={{ background: 'linear-gradient(180deg, #f8fcfd 0%, #ffffff 100%)' }}
+        className="py-24 px-4 relative"
+        style={{ background: '#F8FBFC' }}
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#55BCCD' }}>
-              Tudo que você precisa
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#32B3C5' }}>
+              TUDO QUE VOCÊ PRECISA
             </p>
-            <h2 className="text-4xl font-black" style={{ color: '#1C5A90' }}>Funcionalidades</h2>
+            <h2 className="text-3xl md:text-4xl font-black" style={{ color: '#0A2540' }}>Funcionalidades</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
-              icon="✅"
+              icon={<ShieldCheck size={26} strokeWidth={2.5} />}
               title="Comunidade verificada"
-              desc="Todos os médicos passam por verificação de CRM junto aos respectivos Conselhos. Apenas profissionais devidamente registrados e ativos participam da plataforma."
+              desc="Todos os médicos passam por verificação de CRM junto aos respectivos Conselhos. Apenas profissionais devidamente registrados participam."
             />
             <FeatureCard
-              icon="📋"
+              icon={<FileText size={26} strokeWidth={2.5} />}
               title="Plantão Avulso & Contrato Fixo"
               desc="Oferte um plantão pontual ou estabeleça um contrato fixo de longo prazo. Flexibilidade total para médicos ofertantes e candidatos."
             />
             <FeatureCard
-              icon="🗺"
+              icon={<Map size={26} strokeWidth={2.5} />}
               title="Mapa interativo"
               desc="Visualize plantões disponíveis no mapa, ordenados por proximidade. Veja valores, datas, horários e número de leitos antes de se candidatar."
             />
             <FeatureCard
-              icon="📅"
+              icon={<CalendarDays size={26} strokeWidth={2.5} />}
               title="Agenda integrada"
               desc="Acompanhe todos os seus plantões confirmados em um calendário. Veja o que tem hoje na sua agenda e planeje com antecedência."
             />
             <FeatureCard
-              icon="💳"
+              icon={<CreditCard size={26} strokeWidth={2.5} />}
               title="Pagamento seguro"
               desc="PIX, cartão de crédito (até 6x) ou boleto. O valor fica retido e é repassado ao médico que realizou o plantão apenas após a conclusão."
             />
             <FeatureCard
-              icon="💬"
+              icon={<MessageSquare size={26} strokeWidth={2.5} />}
               title="Chat privado"
               desc="Converse com o outro profissional antes e após a confirmação do plantão. As mensagens são privadas, seguras e ficam registradas no app."
             />
@@ -439,47 +455,55 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
       </section>
 
       {/* ── Confiança & Comunidade ── */}
-      <section className="py-24 px-4" style={{ background: 'linear-gradient(135deg, #1C5A90 0%, #0e3a62 100%)' }}>
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 px-4 relative overflow-hidden" style={{ background: '#0A2540' }}>
+        {/* Glow effects */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#32B3C5] opacity-[0.08] blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#0D8F9A] opacity-[0.1] blur-[80px] rounded-full pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#55BCCD' }}>
-              Segurança em primeiro lugar
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#32B3C5' }}>
+              SEGURANÇA EM PRIMEIRO LUGAR
             </p>
-            <h2 className="text-4xl font-black text-white">Uma comunidade que você pode confiar</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-white">Segurança em primeiro lugar</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {[
               {
-                icon: '🛡',
+                icon: <ShieldCheck size={32} className="text-[#32B3C5]" />,
                 title: 'CRM Verificado',
-                desc: 'Verificamos com rigor se o CRM informado é válido junto aos respectivos órgãos. Apenas médicos ativos participam da plataforma.',
+                desc: 'Verificamos com rigor se o CRM informado é válido junto aos órgãos responsáveis. Apenas médicos ativos podem participar.',
               },
               {
-                icon: '🔒',
+                icon: <Lock size={32} className="text-[#32B3C5]" />,
                 title: 'Dados Protegidos',
-                desc: 'Suas informações pessoais e de pagamento são protegidas por mecanismos de segurança e criptografia de ponta a ponta.',
+                desc: 'Suas informações pessoais e de pagamento são protegidas com mecanismos de segurança de ponta a ponta.',
               },
               {
-                icon: '💰',
+                icon: <CreditCard size={32} className="text-[#32B3C5]" />,
                 title: 'Pagamento Escrow',
-                desc: 'O valor do plantão é retido pela plataforma e repassado somente após a realização do plantão, protegendo ambas as partes.',
+                desc: 'O valor do plantão é retido e apenas repassado somente após a realização do plantão por ambas as partes.',
               },
               {
-                icon: '⭐',
+                icon: <UserPlus size={32} className="text-[#32B3C5]" />,
                 title: 'Reputação na Plataforma',
-                desc: 'O histórico de compromissos cumpridos é registrado. Médicos confiáveis se destacam, promovendo responsabilidade na comunidade.',
+                desc: 'O histórico de compromissos cumpridos é registrado. Médicos confiáveis se destacam, promovendo responsabilidade.',
               },
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex gap-5 p-6 rounded-2xl"
-                style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(85,188,205,0.25)' }}
+                className="flex gap-6 p-8 rounded-[2rem] transition-transform hover:-translate-y-1"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
+                  border: '1px solid rgba(50, 179, 197, 0.2)',
+                  boxShadow: 'inset 0 0 20px rgba(50, 179, 197, 0.05)'
+                }}
               >
-                <span className="text-3xl flex-shrink-0">{item.icon}</span>
+                <div className="flex-shrink-0 mt-1">{item.icon}</div>
                 <div>
-                  <h3 className="font-bold text-white text-lg mb-2">{item.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#a8d8e8' }}>{item.desc}</p>
+                  <h3 className="font-bold text-white text-xl mb-3">{item.title}</h3>
+                  <p className="text-base leading-relaxed text-[#a8d8e8]">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -493,11 +517,118 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
               { value: 'Em breve', label: 'Plantões realizados' },
               { value: 'Em breve', label: 'Especialidades' },
             ].map((s, i) => (
-              <div key={i} className="text-center p-5 rounded-2xl" style={{ background: 'rgba(255,255,255,0.08)' }}>
-                <div className="text-2xl font-black text-white mb-1">{s.value}</div>
-                <div className="text-xs uppercase tracking-wider font-semibold" style={{ color: '#55BCCD' }}>{s.label}</div>
+              <div key={i} className="text-center p-6 rounded-[1.5rem]" style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.05)'
+              }}>
+                <div className="text-2xl font-black text-white mb-2">{s.value}</div>
+                <div className="text-xs uppercase tracking-wider font-bold" style={{ color: '#32B3C5' }}>{s.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Como funciona ── */}
+      <section id="como-funciona" className="py-24 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#32B3C5' }}>
+              SIMPLES E RÁPIDO
+            </p>
+            <h2 className="text-3xl md:text-5xl font-black" style={{ color: '#0A2540' }}>Como funciona</h2>
+          </div>
+
+          <div className="relative">
+            {/* Connecting line (desktop) */}
+            <div
+              className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-1 z-0 rounded-full"
+              style={{ background: '#EAF8FA' }}
+            >
+              <div className="h-full bg-[#32B3C5] w-full rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+              <StepCard
+                icon={<UserPlus size={24} />}
+                title="Cadastre-se como médico"
+                desc=""
+              />
+              <StepCard
+                icon={<Search size={24} />}
+                title="Oferte ou candidate-se"
+                desc=""
+              />
+              <StepCard
+                icon={<MessageCircle size={24} />}
+                title="Converse pelo chat"
+                desc=""
+              />
+              <StepCard
+                icon={<CreditCard size={24} />}
+                title="Pagamento garantido"
+                desc=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Depoimentos ── */}
+      <section id="depoimentos" className="py-24 px-4" style={{ background: '#F8FBFC' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black" style={{ color: '#0A2540' }}>O que os médicos dizem</h2>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            {/* Left Testimonials */}
+            <div className="flex flex-col gap-6 w-full lg:w-1/3">
+              <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
+                <div className="flex gap-1 mb-3">
+                  {[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}
+                </div>
+                <p className="text-sm leading-relaxed mb-4 text-gray-700 italic">
+                  "Finalmente uma plataforma séria para médicos. A verificação de CRM transmite muita segurança na hora de passar um plantão."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#32B3C5] font-bold text-white text-sm flex items-center justify-center">Dr</div>
+                  <div>
+                    <div className="font-bold text-sm text-[#0A2540]">Dr(a). — Clínico Geral</div>
+                    <div className="text-xs text-gray-500">São Paulo, SP · Usuário verificado</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Center Logo/App Image */}
+            <div className="w-full lg:w-1/3 flex justify-center py-8 lg:py-0 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-[#32B3C5]/10 to-transparent rounded-full blur-3xl scale-150 animate-pulse pointer-events-none" />
+              <img
+                src="./logo_transparent.png"
+                alt="97plantões App"
+                className="w-full max-w-[280px] h-auto object-contain relative z-10 drop-shadow-2xl animate-float"
+              />
+            </div>
+
+            {/* Right Testimonials */}
+            <div className="flex flex-col gap-6 w-full lg:w-1/3">
+              <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
+                <div className="flex gap-1 mb-3">
+                  {[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}
+                </div>
+                <p className="text-sm leading-relaxed mb-4 text-gray-700 italic">
+                  "Consegui um contrato fixo pelo aplicativo. A funcionalidade de Contrato Fixo é o diferencial que não vi em nenhuma outra plataforma."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#0D8F9A] font-bold text-white text-sm flex items-center justify-center">Dr</div>
+                  <div>
+                    <div className="font-bold text-sm text-[#0A2540]">Dr(a). — Radiologista</div>
+                    <div className="text-xs text-gray-500">Curitiba, PR · Usuário verificado</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -621,34 +752,98 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
       {/* ── Download CTA ── */}
       <section
         id="download"
-        className="py-24 px-4 text-center"
-        style={{ background: 'linear-gradient(135deg, #55BCCD 0%, #1C5A90 100%)' }}
+        className="py-24 px-4 flex flex-col justify-center items-center relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #1C5A90 0%, #32B3C5 100%)' }}
       >
-        <div className="max-w-2xl mx-auto">
-          <div className="inline-block bg-white/20 text-white rounded-full px-5 py-2 text-sm font-semibold mb-8">
+        <div className="max-w-3xl w-full text-center mb-12 relative z-10">
+          <div className="inline-block bg-white/20 text-white rounded-full px-5 py-2 text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm border border-white/20">
             Disponível em breve na App Store & Google Play
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight drop-shadow-sm">
             Conectando a Saúde do Brasil
           </h2>
-          <p className="text-white/80 text-lg mb-10 max-w-lg mx-auto">
+          <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
             Junte-se à comunidade de médicos que estão transformando a forma de trocar plantões no Brasil.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#"
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:-translate-y-1"
-              style={{ background: 'white', color: '#1C5A90', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}
-            >
-              <span>🍎</span> App Store
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:-translate-y-1"
-              style={{ background: 'white', color: '#1C5A90', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}
-            >
-              <span>🤖</span> Google Play
-            </a>
+        </div>
+
+        <div
+          className="max-w-4xl w-full flex flex-col md:flex-row items-center justify-between gap-12 p-10 md:p-14 rounded-[2.5rem] relative z-10"
+          style={{
+            background: 'rgba(255, 255, 255, 0.12)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1.5px solid rgba(255, 255, 255, 0.25)',
+            boxShadow: '0 25px 50px rgba(0,0,0,0.1)'
+          }}
+        >
+          {/* Glass shine effect inner */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none rounded-[2.5rem]" />
+
+          {/* Left Text & Buttons */}
+          <div className="flex flex-col items-center md:items-start relative z-10 w-full md:w-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+              Baixe o App Agora
+            </h2>
+
+            <div className="flex flex-col gap-4 w-full sm:w-auto">
+              {/* App Store Button */}
+              <a
+                href="#"
+                className="flex items-center gap-3 bg-black text-white px-5 py-2.5 rounded-xl transition-transform hover:scale-105 shadow-xl"
+              >
+                <svg viewBox="0 0 384 512" className="w-8 h-8 fill-current"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
+                <div className="flex flex-col items-start leading-none gap-0.5">
+                  <span className="text-[10px] font-medium text-gray-200 uppercase tracking-widest">Download on the</span>
+                  <span className="text-xl font-semibold -mt-0.5 tracking-tight">App Store</span>
+                </div>
+              </a>
+
+              {/* Google Play Button */}
+              <a
+                href="#"
+                className="flex items-center gap-3 bg-black text-white px-5 py-2.5 rounded-xl transition-transform hover:scale-105 shadow-xl"
+              >
+                <svg viewBox="0 0 512 512" className="w-8 h-8">
+                  {/* Simplistic stylized colored playback triangle for Android */}
+                  <path fill="#4CAF50" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                  <path fill="#2196F3" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z" />
+                  <path fill="#FFEB3B" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z" />
+                  <path fill="#F44336" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                </svg>
+                <div className="flex flex-col items-start leading-none gap-0.5">
+                  <span className="text-[10px] font-medium text-gray-200 uppercase tracking-widest">GET IT ON</span>
+                  <span className="text-xl font-semibold -mt-0.5 tracking-tight">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Right QR Code */}
+          <div className="flex flex-col items-center relative z-10 w-full md:w-auto">
+            <div className="bg-white p-3 rounded-2xl shadow-xl mb-3">
+              {/* Dummy QR Code SVG using simple paths */}
+              <svg
+                viewBox="0 0 100 100"
+                className="w-40 h-40 md:w-48 md:h-48"
+                fill="#0A2540"
+              >
+                <rect width="100" height="100" fill="white" rx="8" />
+                {/* Large position markers */}
+                <path d="M10 10h24v24H10zM15 15h14v14H15zM18 18h8v8h-8z" />
+                <path d="M66 10h24v24H66zM71 15h14v14H71zM74 18h8v8h-8z" />
+                <path d="M10 66h24v24H10zM15 71h14v14H15zM18 74h8v8h-8z" />
+
+                {/* Alignment marker */}
+                <path d="M72 72h10v10H72zM75 75h4v4h-4z" />
+
+                {/* Data modules */}
+                <path d="M40 10h6v6h-6zM50 10h10v6H50zM40 20h14v6H40zM58 20h4v6h-4zM40 30h20v6H40zM10 40h14v6H10zM30 40h20v6H30zM56 40h34v6H56zM10 50h30v6H10zM44 50h12v6H44zM60 50h30v6H60zM40 66h16v6H40zM60 66h8v6h-8zM70 66h14v6H70zM40 76h6v6h-6zM50 76h18v6H50zM88 76h4v14h-4zM40 86h20v6H40zM66 86h6v6h-6z" />
+                <path d="M26 26h4v4h-4zM20 30h6v6h-6zM36 14h4v6h-4zM54 26h6v6h-6zM46 80h4v6h-4zM56 80h4v6h-4z" />
+                <path d="M68 56h4v4h-4zM80 56h4v4h-4zM64 46h4v4h-4zM84 46h4v4h-4z" />
+              </svg>
+            </div>
+            <p className="text-white text-sm font-medium tracking-wide">Scan o QR Code</p>
           </div>
         </div>
       </section>
