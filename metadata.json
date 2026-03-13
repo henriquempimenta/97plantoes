@@ -1,5 +1,5 @@
 {
-  "name": "TaskMaster Pro",
-  "description": "A personal task manager built with a monorepo architecture, React, Tailwind CSS, and TanStack Query.",
+  "name": "97plantões",
+  "description": "A plataforma de plantões médicos do Brasil. Oferte, encontre e troque plantões com segurança.",
   "requestFramePermissions": []
 }

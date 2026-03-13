@@ -3,15 +3,15 @@ import LandingPage from './components/LandingPage';
 import TermsAndPrivacyPage from './components/TermsAndPrivacyPage';
 
 export default function App() {
-  const [path, setPath] = useState(window.location.pathname);
+  const [page, setPage] = useState(() => new URLSearchParams(window.location.search).get('page'));
 
   useEffect(() => {
-    const onLocationChange = () => setPath(window.location.pathname);
+    const onLocationChange = () => setPage(new URLSearchParams(window.location.search).get('page'));
     window.addEventListener('popstate', onLocationChange);
     return () => window.removeEventListener('popstate', onLocationChange);
   }, []);
 
-  if (path === '/termos-de-uso' || path === '/termos') {
+  if (page === 'termos-de-uso' || page === 'termos') {
     return <TermsAndPrivacyPage />;
   }
 

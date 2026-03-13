@@ -2,7 +2,14 @@ import React, { useEffect } from 'react';
 
 export default function TermsAndPrivacyPage() {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      setTimeout(() => {
+        const el = document.getElementById(window.location.hash.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   return (
@@ -78,7 +85,7 @@ export default function TermsAndPrivacyPage() {
       >
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5" style={{ textDecoration: 'none' }}>
+          <a href="?" className="flex items-center gap-2.5" style={{ textDecoration: 'none' }}>
             <img src="./logo.jpeg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
             <span className="font-extrabold text-xl tracking-tight" style={{ color: '#1C5A90' }}>
               97<span style={{ color: '#55BCCD' }}>plantões</span>
@@ -87,11 +94,11 @@ export default function TermsAndPrivacyPage() {
 
           {/* Links */}
           <div className="hidden md:flex gap-8 items-center">
-            <a href="/" className="nav-link">Voltar para a Home</a>
+            <a href="?" className="nav-link">Voltar para a Home</a>
           </div>
 
           {/* CTA */}
-          <a href="/#download" className="btn-primary">
+          <a href="?#download" className="btn-primary">
             Baixar o App
           </a>
         </div>
@@ -250,8 +257,8 @@ export default function TermsAndPrivacyPage() {
               </div>
             </div>
             <div className="flex gap-8 text-sm" style={{ color: '#9ca3af' }}>
-              <a href="/termos-de-uso" className="hover:text-white transition">Termos de Uso</a>
-              <a href="/termos-de-uso#privacidade" className="hover:text-white transition">Política de Privacidade</a>
+              <a href="?page=termos-de-uso" className="hover:text-white transition">Termos de Uso</a>
+              <a href="?page=termos-de-uso#privacidade" className="hover:text-white transition">Política de Privacidade</a>
               <a href="#" className="hover:text-white transition">Suporte</a>
             </div>
           </div>
