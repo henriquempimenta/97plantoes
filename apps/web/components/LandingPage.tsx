@@ -864,7 +864,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <div className="flex gap-8 text-sm" style={{ color: '#9ca3af' }}>
               <a href="?page=termos-de-uso" className="hover:text-white transition">Termos de Uso</a>
               <a href="?page=termos-de-uso#privacidade" className="hover:text-white transition">Política de Privacidade</a>
-              <a href="#" className="hover:text-white transition">Suporte</a>
+              <a href="?page=suporte" className="hover:text-white transition">Suporte</a>
             </div>
           </div>
           <div className="border-t pt-8 text-center text-sm" style={{ borderColor: '#1C5A9055', color: '#6b7280' }}>
