@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
 
 // --- Brand Colors ---
 // Ciano Plantonista (Light/Teal): #32B3C5
@@ -198,6 +199,13 @@ const faqGroups = [
   },
 ];
 
+const testimonials = [
+  { role: 'Clínica Médica', city: 'São Paulo, SP', status: 'Médico verificado', letter: 'C', color: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)', text: 'Finalmente uma plataforma séria para médicos. A verificação de CRM transmite muita segurança em relação ao médico para quem passei meu plantão.' },
+  { role: 'Pediatra', city: 'Rio de Janeiro, RJ', status: 'Médica verificada', letter: 'A', color: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)', text: 'Encontrar plantões na minha especialidade ficou muito mais fácil. O Mapa interativo é incrível para encontrar plantões em Hospitais próximos a mim.' },
+  { role: 'Emergencista', city: 'São Paulo, SP', status: 'Médico verificado', letter: 'G', color: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', text: 'Recebi o pagamento na minha conta logo após finalizar o plantão. Não preciso mais me preocupar com calotes, resolveu um maior problema de pegar plantão no dia a dia.' },
+  { role: 'Intensivista', city: 'Rio de Janeiro, RJ', status: 'Médica verificada', letter: 'J', color: 'linear-gradient(135deg, #A855F7 0%, #7E22CE 100%)', text: 'O chat com o médico que vai assumir o plantão é uma ferramenta incrível para alinhar os detalhes com tranquilidade. Simples e privado.' },
+];
+
 // --- Main Component ---
 export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => void }) {
   const [openCategory, setOpenCategory] = useState<string>(faqGroups[0].category);
@@ -340,25 +348,18 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
           <div className="flex flex-col items-start text-left">
             <div className="trust-badge mb-6">
               <span className="w-2 h-2 rounded-full bg-[#32B3C5] flex-shrink-0 animate-pulse"></span>
-              O APLICATIVO PARA MÉDICOS DO BRASIL 🛡️
+              De Médico para Médico 🛡️
             </div>
 
             <h1
               className="text-5xl lg:text-6xl xl:text-[4rem] font-black tracking-tight mb-6 leading-[1.1]"
               style={{ color: '#0A2540' }}
             >
-              A plataforma de{' '}
-              <br className="hidden lg:block" />
-              <span style={{ color: '#32B3C5' }}>
-                plantões médicos
-              </span>{' '}
-              <br className="hidden lg:block" />
-              do Brasil
+              O Aplicativo que conecta Médicos a plantões por todo o Brasil.
             </h1>
 
             <p className="text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-medium" style={{ color: '#4b5563' }}>
-              <strong style={{ color: '#0A2540' }}>Conectando a SAÚDE do BRASIL.</strong>{' '}
-              Oferte, encontre e troque plantões com segurança — comunidade exclusiva de médicos verificados, pagamento garantido e chat privado.
+              Encontre plantões próximos a você ou passe seu plantão para médicos verificados com segurança, praticidade e eficiência.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -392,7 +393,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
         style={{ borderColor: '#55BCCD22', background: 'linear-gradient(90deg, #f0fafc 0%, #e8f7fa 50%, #f0fafc 100%)' }}
       >
         <div className="animate-marquee gap-10 items-center">
-          {marqueeItems.map((text, i) => (
+          {Array.from(marqueeItems).map((text, i) => (
             <span
               key={i}
               className="whitespace-nowrap flex items-center gap-10 font-semibold text-base"
@@ -423,32 +424,32 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <FeatureCard
               icon={<ShieldCheck size={26} strokeWidth={2.5} />}
               title="Comunidade verificada"
-              desc="Todos os médicos passam por verificação de CRM junto aos respectivos Conselhos. Apenas profissionais devidamente registrados participam."
-            />
-            <FeatureCard
-              icon={<FileText size={26} strokeWidth={2.5} />}
-              title="Plantão Avulso & Contrato Fixo"
-              desc="Oferte um plantão pontual ou estabeleça um contrato fixo de longo prazo. Flexibilidade total para médicos ofertantes e candidatos."
+              desc="Todos os médicos passam por verificação de dados e do CRM junto aos respectivos Conselhos. Apenas profissionais devidamente registrados podem participar da plataforma."
             />
             <FeatureCard
               icon={<Map size={26} strokeWidth={2.5} />}
               title="Mapa interativo"
-              desc="Visualize plantões disponíveis no mapa, ordenados por proximidade. Veja valores, datas, horários e número de leitos antes de se candidatar."
+              desc="Encontre plantões de todas as especialidades e em Hospitais/Unidades de Saúde pelo Mapa. Veja os plantões próximos e escolha aqueles de seu interesse."
             />
             <FeatureCard
-              icon={<CalendarDays size={26} strokeWidth={2.5} />}
-              title="Agenda integrada"
-              desc="Acompanhe todos os seus plantões confirmados em um calendário. Veja o que tem hoje na sua agenda e planeje com antecedência."
+              icon={<FileText size={26} strokeWidth={2.5} />}
+              title="Passar Plantão"
+              desc="Passe seu plantão quando precisar para médicos qualificados e verificados e transfira o valor diretamente ao outro profissional pelo aplicativo, por Cartão de Crédito (em até 6x), PIX ou Boleto, de forma simples e segura."
             />
             <FeatureCard
               icon={<CreditCard size={26} strokeWidth={2.5} />}
               title="Pagamento seguro"
-              desc="PIX, cartão de crédito (até 6x) ou boleto. O valor fica retido e é repassado ao médico que realizou o plantão apenas após a conclusão."
+              desc="Pague o plantão que deseja passar por Cartão de Crédito (em até 6x), Pix ou boleto. O valor fica retido com segurança e é repassado ao médico que assumiu o plantão apenas após a sua conclusão."
             />
             <FeatureCard
               icon={<MessageSquare size={26} strokeWidth={2.5} />}
               title="Chat privado"
-              desc="Converse com o outro profissional antes e após a confirmação do plantão. As mensagens são privadas, seguras e ficam registradas no app."
+              desc="Converse com o outro médico antes e após a confirmação do plantão. As mensagens são privadas e seguras."
+            />
+            <FeatureCard
+              icon={<CalendarDays size={26} strokeWidth={2.5} />}
+              title="Agenda integrada"
+              desc="Acompanhe todos os seus plantões confirmados em um calendário integrado no aplicativo. Veja seus compromissos e planeje sua agenda com antecedência."
             />
           </div>
         </div>
@@ -469,7 +470,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            {[
+            {Array.from([
               {
                 icon: <ShieldCheck size={32} className="text-[#32B3C5]" />,
                 title: 'CRM Verificado',
@@ -490,10 +491,10 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
                 title: 'Reputação na Plataforma',
                 desc: 'O histórico de compromissos cumpridos é registrado. Médicos confiáveis se destacam, promovendo responsabilidade.',
               },
-            ].map((item, i) => (
+            ]).map((item: any, i: number) => (
               <div
                 key={i}
-                className="flex gap-6 p-8 rounded-[2rem] transition-transform hover:-translate-y-1"
+                className="flex gap-6 p-8 rounded-4xl transition-transform hover:-translate-y-1"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
                   border: '1px solid rgba(50, 179, 197, 0.2)',
@@ -509,23 +510,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             ))}
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { value: 'Em breve', label: 'Médicos cadastrados' },
-              { value: 'Em breve', label: 'Cidades cobertas' },
-              { value: 'Em breve', label: 'Plantões realizados' },
-              { value: 'Em breve', label: 'Especialidades' },
-            ].map((s, i) => (
-              <div key={i} className="text-center p-6 rounded-[1.5rem]" style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.05)'
-              }}>
-                <div className="text-2xl font-black text-white mb-2">{s.value}</div>
-                <div className="text-xs uppercase tracking-wider font-bold" style={{ color: '#32B3C5' }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
@@ -551,12 +536,12 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
               <StepCard
                 icon={<UserPlus size={24} />}
-                title="Cadastre-se como médico"
+                title="Cadastre-se como Médico"
                 desc=""
               />
               <StepCard
                 icon={<Search size={24} />}
-                title="Oferte ou candidate-se"
+                title="Oferte ou Candidate-se"
                 desc=""
               />
               <StepCard
@@ -586,16 +571,16 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <div className="flex flex-col gap-6 w-full lg:w-1/3">
               <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
                 <div className="flex gap-1 mb-3">
-                  {[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}
+                  <span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span>
                 </div>
                 <p className="text-sm leading-relaxed mb-4 text-gray-700 italic">
-                  "Finalmente uma plataforma séria para médicos. A verificação de CRM transmite muita segurança na hora de passar um plantão."
+                  "Encontrar plantões na minha especialidade ficou muito mais fácil. O Mapa interativo é incrível para encontrar plantões em Hospitais próximos a mim."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#32B3C5] font-bold text-white text-sm flex items-center justify-center">Dr</div>
+                  <div className="w-10 h-10 rounded-full font-bold text-white text-sm flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 100%)' }}>A</div>
                   <div>
-                    <div className="font-bold text-sm text-[#0A2540]">Dr(a). — Clínico Geral</div>
-                    <div className="text-xs text-gray-500">São Paulo, SP · Usuário verificado</div>
+                    <div className="font-bold text-sm text-[#0A2540]">Pediatra</div>
+                    <div className="text-xs text-gray-500">Rio de Janeiro, RJ · Médica verificada</div>
                   </div>
                 </div>
               </div>
@@ -603,7 +588,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
 
             {/* Center Logo/App Image */}
             <div className="w-full lg:w-1/3 flex justify-center py-8 lg:py-0 relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#32B3C5]/10 to-transparent rounded-full blur-3xl scale-150 animate-pulse pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-[#32B3C5]/10 to-transparent rounded-full blur-3xl scale-150 animate-pulse pointer-events-none" />
               <img
                 src="./logo_transparent.png"
                 alt="97plantões App"
@@ -615,16 +600,16 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <div className="flex flex-col gap-6 w-full lg:w-1/3">
               <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
                 <div className="flex gap-1 mb-3">
-                  {[1, 2, 3, 4, 5].map(s => <span key={s} className="text-[#f59e0b] text-lg">★</span>)}
+                  <span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span><span className="text-[#f59e0b] text-lg">★</span>
                 </div>
                 <p className="text-sm leading-relaxed mb-4 text-gray-700 italic">
-                  "Consegui um contrato fixo pelo aplicativo. A funcionalidade de Contrato Fixo é o diferencial que não vi em nenhuma outra plataforma."
+                  "Recebi o pagamento na minha conta logo após finalizar o plantão. Não preciso mais me preocupar com calotes, resolveu um maior problema de pegar plantão no dia a dia"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#0D8F9A] font-bold text-white text-sm flex items-center justify-center">Dr</div>
+                  <div className="w-10 h-10 rounded-full font-bold text-white text-sm flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)' }}>G</div>
                   <div>
-                    <div className="font-bold text-sm text-[#0A2540]">Dr(a). — Radiologista</div>
-                    <div className="text-xs text-gray-500">Curitiba, PR · Usuário verificado</div>
+                    <div className="font-bold text-sm text-[#0A2540]">Emergencista</div>
+                    <div className="text-xs text-gray-500">São Paulo, SP · Médico verificado</div>
                   </div>
                 </div>
               </div>
@@ -662,30 +647,20 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
       <section id="depoimentos" className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#55BCCD' }}>
-              Comunidade
+            <p className="text-base font-bold uppercase tracking-widest mb-3" style={{ color: '#55BCCD' }}>
+              Comunidade 97
             </p>
             <h2 className="text-4xl font-black" style={{ color: '#1C5A90' }}>O que os médicos dizem</h2>
-            <p className="mt-3 text-base" style={{ color: '#6b7280' }}>
-              Depoimentos em breve — lançamento chegando! 🚀
-            </p>
           </div>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {[
-              { role: 'Clínico Geral', city: 'São Paulo, SP', text: 'Finalmente uma plataforma séria para médicos. A verificação de CRM transmite muita segurança na hora de passar um plantão.' },
-              { role: 'Pediatra', city: 'Rio de Janeiro, RJ', text: 'Encontrar plantões na minha especialidade ficou muito mais fácil. O mapa interativo é incrível para encontrar hospitais próximos.' },
-              { role: 'Emergencista', city: 'Belo Horizonte, MG', text: 'O pagamento garantido resolveu o maior problema da passagem de plantão. Não preciso mais me preocupar com calotes.' },
-              { role: 'Intensivista', city: 'Curitiba, PR', text: 'O chat com o médico que vai assumir o plantão é essencial para alinhar detalhes. Simples e privado.' },
-              { role: 'Radiologista', city: 'Porto Alegre, RS', text: 'Consegui um contrato fixo pelo aplicativo. A funcionalidade de Contrato Fixo é diferencial que não vi em nenhuma outra plataforma.' },
-              { role: 'Clínica Médica', city: 'Fortaleza, CE', text: 'A agenda integrada me ajuda a planejar mês inteiro com antecedência. Visualizo tudo num só lugar.' },
-            ].map((t, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {Array.from(testimonials).map((t: any, i: number) => (
               <div
                 key={i}
-                className="break-inside-avoid p-7 rounded-2xl border"
+                className="p-7 rounded-2xl border flex flex-col"
                 style={{ background: '#f8fcfd', borderColor: '#55BCCD22' }}
               >
                 <div className="flex gap-1 mb-4">
-                  {[1, 2, 3, 4, 5].map(s => <span key={s} style={{ color: '#f59e0b' }}>★</span>)}
+                  <span style={{ color: '#f59e0b' }}>★</span><span style={{ color: '#f59e0b' }}>★</span><span style={{ color: '#f59e0b' }}>★</span><span style={{ color: '#f59e0b' }}>★</span><span style={{ color: '#f59e0b' }}>★</span>
                 </div>
                 <p className="text-sm leading-relaxed mb-6" style={{ color: '#374151' }}>
                   "{t.text}"
@@ -693,13 +668,13 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
                 <div className="flex items-center gap-3">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg, #55BCCD 0%, #1C5A90 100%)' }}
+                    style={{ background: t.color }}
                   >
-                    Dr
+                    {t.letter}
                   </div>
                   <div>
-                    <div className="font-bold text-sm" style={{ color: '#1C5A90' }}>Dr(a). — {t.role}</div>
-                    <div className="text-xs" style={{ color: '#9ca3af' }}>{t.city} · Usuário verificado</div>
+                    <div className="font-bold text-sm" style={{ color: '#1C5A90' }}>{t.role}</div>
+                    <div className="text-xs" style={{ color: '#9ca3af' }}>{t.city} · {t.status}</div>
                   </div>
                 </div>
               </div>
@@ -763,7 +738,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             Conectando a Saúde do Brasil
           </h2>
           <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-            Junte-se à comunidade de médicos que estão transformando a forma de trocar plantões no Brasil.
+            Junte-se à <span className="font-black" style={{ color: '#0A2540' }}>97plantões</span> e conecte-se a médicos de todo o Brasil para encontrar ou passar plantões com segurança e eficiência.
           </p>
         </div>
 
@@ -848,30 +823,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="pt-16 pb-10 border-t px-4" style={{ background: '#0e1c2e', borderColor: '#1C5A90' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
-            <div className="flex items-center gap-3">
-              <img src="./logo.jpeg" alt="97plantões logo" className="h-10 w-auto rounded-lg" />
-              <div>
-                <div className="font-extrabold text-xl" style={{ color: 'white' }}>
-                  97<span style={{ color: '#55BCCD' }}>plantões</span>
-                </div>
-                <div className="text-xs" style={{ color: '#6b7280' }}>Conectando a Saúde do Brasil</div>
-              </div>
-            </div>
-            <div className="flex gap-8 text-sm" style={{ color: '#9ca3af' }}>
-              <a href="?page=termos-de-uso" className="hover:text-white transition">Termos de Uso</a>
-              <a href="?page=termos-de-uso#privacidade" className="hover:text-white transition">Política de Privacidade</a>
-              <a href="?page=suporte" className="hover:text-white transition">Suporte</a>
-            </div>
-          </div>
-          <div className="border-t pt-8 text-center text-sm" style={{ borderColor: '#1C5A9055', color: '#6b7280' }}>
-            © {new Date().getFullYear()} 97plantões. Todos os direitos reservados.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
