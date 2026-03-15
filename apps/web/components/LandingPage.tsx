@@ -355,7 +355,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
               className="text-5xl lg:text-6xl xl:text-[4rem] font-black tracking-tight mb-6 leading-[1.1]"
               style={{ color: '#0A2540' }}
             >
-              O Aplicativo que conecta Médicos a plantões por todo o Brasil.
+              O App que conecta Médicos a plantões por todo o Brasil.
             </h1>
 
             <p className="text-lg md:text-xl mb-10 max-w-xl leading-relaxed font-medium" style={{ color: '#4b5563' }}>
