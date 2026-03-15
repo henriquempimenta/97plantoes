@@ -428,7 +428,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             />
             <FeatureCard
               icon={<Map size={26} strokeWidth={2.5} />}
-              title="Mapa interativo"
+              title="Encontre plantões no Mapa"
               desc="Encontre plantões de todas as especialidades e em Hospitais/Unidades de Saúde pelo Mapa. Veja os plantões próximos e escolha aqueles de seu interesse."
             />
             <FeatureCard
