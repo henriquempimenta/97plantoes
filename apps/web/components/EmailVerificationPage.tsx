@@ -78,9 +78,6 @@ export default function EmailVerificationPage() {
         await applyActionCode(auth, oobCode);
 
         setState('success');
-        setTimeout(() => {
-          window.location.href = safeUrl;
-        }, 2200);
       } catch (err: any) {
         const code = String(err?.code || '');
 
