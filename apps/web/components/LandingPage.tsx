@@ -326,6 +326,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <a href="#funcionalidades" className="nav-link">Funcionalidades</a>
             <a href="#como-funciona" className="nav-link">Como funciona</a>
             <a href="#faq" className="nav-link">FAQ</a>
+            <a href="?page=sobre-nos" className="nav-link">Sobre Nós</a>
           </div>
 
           {/* CTA */}

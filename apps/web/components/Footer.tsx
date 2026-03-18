@@ -15,7 +15,8 @@ export default function Footer() {
               <div className="text-xs" style={{ color: '#6b7280' }}>Conectando a Saúde do Brasil</div>
             </div>
           </div>
-          <div className="flex items-center gap-8 text-sm" style={{ color: '#9ca3af' }}>
+          <div className="flex items-center gap-8 text-sm flex-wrap" style={{ color: '#9ca3af' }}>
+            <a href="?page=sobre-nos" className="hover:text-white transition">Sobre Nós</a>
             <a href="?page=termos-de-uso" className="hover:text-white transition">Termos de Uso</a>
             <a href="?page=termos-de-uso#privacidade" className="hover:text-white transition">Política de Privacidade</a>
             <a href="?page=suporte" className="flex items-center gap-2 px-5 py-2 rounded-full border border-[#32B3C5] text-[#32B3C5] hover:bg-[#32B3C5]/10 hover:text-[#32B3C5] transition font-medium">
@@ -25,7 +26,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t pt-8 text-center text-sm" style={{ borderColor: '#1C5A9055', color: '#6b7280' }}>
-          © {new Date().getFullYear()} 97plantões. Todos os direitos reservados.
+          <p>© {new Date().getFullYear()} SANT-E TECNOLOGIA EM SAUDE LTDA · CNPJ 63.478.081/0001-50</p>
+          <p className="mt-1">Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

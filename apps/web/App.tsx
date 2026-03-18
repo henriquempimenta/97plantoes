@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import LandingPage from './components/LandingPage';
 import TermsAndPrivacyPage from './components/TermsAndPrivacyPage';
 import SupportPage from './components/SupportPage';
+import AboutPage from './components/AboutPage';
 import EmailVerificationPage from './components/EmailVerificationPage';
 
 export default function App() {
@@ -19,6 +20,10 @@ export default function App() {
 
   if (page === 'suporte') {
     return <SupportPage />;
+  }
+
+  if (page === 'sobre-nos') {
+    return <AboutPage />;
   }
 
   if (page === 'termos-de-uso' || page === 'termos') {
