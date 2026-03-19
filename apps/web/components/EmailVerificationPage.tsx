@@ -220,24 +220,15 @@ export default function EmailVerificationPage() {
                         </svg>
                       </div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                        Seu e-mail foi verificado
+                        Seu e-mail foi verificado.
                       </h2>
                       <p className="text-gray-600 leading-relaxed mb-2">
                         Sua conta foi confirmada com sucesso.
                       </p>
                       <p className="text-gray-600 leading-relaxed mb-6">
-                        Você já pode continuar o acesso à plataforma.
+                        Você já pode continuar o acesso ao aplicativo.
                       </p>
-                      <a
-                        href={continueUrl}
-                        className="inline-flex items-center justify-center font-bold text-white text-sm px-8 py-3.5 rounded-2xl transition-all duration-200 hover:-translate-y-0.5"
-                        style={{
-                          background: 'linear-gradient(135deg, #32B3C5 0%, #0D8F9A 100%)',
-                          boxShadow: '0 4px 14px rgba(50, 179, 197, 0.35)',
-                        }}
-                      >
-                        Continuar
-                      </a>
+
                     </div>
                   )}
 
