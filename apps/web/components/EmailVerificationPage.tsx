@@ -228,7 +228,16 @@ export default function EmailVerificationPage() {
                       <p className="text-gray-600 leading-relaxed mb-6">
                         Você já pode continuar o acesso ao aplicativo.
                       </p>
-
+                      <a
+                        href="https://plantao-medico-wu1ab6.web.app/login"
+                        className="inline-flex items-center justify-center font-bold text-white text-sm px-8 py-3.5 rounded-2xl transition-all duration-200 hover:-translate-y-0.5"
+                        style={{
+                          background: 'linear-gradient(135deg, #32B3C5 0%, #0D8F9A 100%)',
+                          boxShadow: '0 4px 14px rgba(50, 179, 197, 0.35)',
+                        }}
+                      >
+                        Continuar
+                      </a>
                     </div>
                   )}
 
