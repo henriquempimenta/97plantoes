@@ -1,4 +1,4 @@
-import{r as o,j as e}from"./index-fVGcubYX.js";import{F as s}from"./Footer-BwPQVDAL.js";function n(){return o.useEffect(()=>{window.location.hash?setTimeout(()=>{const a=document.getElementById(window.location.hash.replace("#",""));a&&a.scrollIntoView({behavior:"smooth"})},100):window.scrollTo(0,0)},[]),e.jsxs("div",{className:"min-h-screen w-full bg-white text-gray-800 font-sans selection:bg-cyan-100 selection:text-cyan-900",style:{fontFamily:"Inter, system-ui, sans-serif"},children:[e.jsx("style",{children:`
+import{r as o,j as e}from"./index-B-IuLqUI.js";import{F as s}from"./Footer-CZkNadPU.js";function n(){return o.useEffect(()=>{window.location.hash?setTimeout(()=>{const a=document.getElementById(window.location.hash.replace("#",""));a&&a.scrollIntoView({behavior:"smooth"})},100):window.scrollTo(0,0)},[]),e.jsxs("div",{className:"min-h-screen w-full bg-white text-gray-800 font-sans selection:bg-cyan-100 selection:text-cyan-900",style:{fontFamily:"Inter, system-ui, sans-serif"},children:[e.jsx("style",{children:`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         .btn-primary {
