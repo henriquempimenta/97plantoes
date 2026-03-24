@@ -6,6 +6,7 @@ const TermsAndPrivacyPage = lazy(() => import('./components/TermsAndPrivacyPage'
 const SupportPage = lazy(() => import('./components/SupportPage'));
 const AboutPage = lazy(() => import('./components/AboutPage'));
 const EmailVerificationPage = lazy(() => import('./components/EmailVerificationPage'));
+const ResetPasswordPage = lazy(() => import('./components/ResetPasswordPage'));
 
 const DelayedFallback = () => {
   const [show, setShow] = useState(false);
@@ -39,6 +40,10 @@ export default function App() {
   const renderPage = () => {
     if (page === 'verificar-email') {
       return <EmailVerificationPage />;
+    }
+
+    if (page === 'redefinir-senha') {
+      return <ResetPasswordPage />;
     }
 
     if (page === 'suporte') {
