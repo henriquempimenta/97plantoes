@@ -1,4 +1,4 @@
-import{r as a,j as e}from"./index-B-IuLqUI.js";import{F as t}from"./Footer-CZkNadPU.js";function s(){return a.useEffect(()=>{window.scrollTo(0,0)},[]),e.jsxs("div",{className:"min-h-screen w-full bg-white text-gray-800 font-sans selection:bg-cyan-100 selection:text-cyan-900",style:{fontFamily:"Inter, system-ui, sans-serif"},children:[e.jsx("style",{children:`
+import{r as a,j as e}from"./index-174-Yi7N.js";import{F as t}from"./Footer-BHdU2b0c.js";function s(){return a.useEffect(()=>{window.scrollTo(0,0)},[]),e.jsxs("div",{className:"min-h-screen w-full bg-white text-gray-800 font-sans selection:bg-cyan-100 selection:text-cyan-900",style:{fontFamily:"Inter, system-ui, sans-serif"},children:[e.jsx("style",{children:`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         .btn-primary {
