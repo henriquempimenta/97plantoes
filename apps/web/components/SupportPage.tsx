@@ -108,7 +108,7 @@ export default function SupportPage() {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
           <a href="?" className="flex items-center gap-2.5" style={{ textDecoration: 'none' }}>
-            <img src="./logo.jpeg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
+            <img src="./logo.svg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
             <span className="font-extrabold text-xl tracking-tight" style={{ color: '#1C5A90' }}>
               97<span style={{ color: '#55BCCD' }}>plantões</span>
             </span>

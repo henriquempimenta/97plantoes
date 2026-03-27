@@ -315,7 +315,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2.5">
-            <img src="./logo.jpeg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
+            <img src="./logo.svg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
             <span className="font-extrabold text-xl tracking-tight" style={{ color: '#1C5A90' }}>
               97<span style={{ color: '#55BCCD' }}>plantões</span>
             </span>
@@ -591,7 +591,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <div className="w-full lg:w-1/3 flex justify-center py-8 lg:py-0 relative">
               <div className="absolute inset-0 bg-linear-to-b from-[#32B3C5]/10 to-transparent rounded-full blur-3xl scale-150 animate-pulse pointer-events-none" />
               <img
-                src="./logo_transparent.png"
+                src="./logo.svg"
                 alt="97plantões App"
                 className="w-full max-w-[280px] h-auto object-contain relative z-10 drop-shadow-2xl animate-float"
               />

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
           <div className="flex items-center gap-3">
-            <img src="./logo.jpeg" alt="97plantões logo" className="h-10 w-auto rounded-lg" />
+            <img src="./logo.svg" alt="97plantões logo" className="h-10 w-auto rounded-lg" />
             <div>
               <div className="font-extrabold text-xl" style={{ color: 'white' }}>
                 97<span style={{ color: '#55BCCD' }}>plantões</span>

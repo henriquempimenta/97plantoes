@@ -205,7 +205,7 @@ export default function ResetPasswordPage() {
       >
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="?" className="flex items-center gap-2.5" style={{ textDecoration: 'none' }}>
-            <img src="./logo.jpeg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
+            <img src="./logo.svg" alt="97plantões logo" className="h-9 w-auto rounded-lg" />
             <span className="font-extrabold text-xl tracking-tight" style={{ color: '#1C5A90' }}>
               97<span style={{ color: '#55BCCD' }}>plantões</span>
             </span>
@@ -234,7 +234,7 @@ export default function ResetPasswordPage() {
               <div className="flex items-center gap-4 mb-6">
                 <div className="bg-white rounded-2xl p-3 shadow-sm">
                   <img
-                    src="./logo.jpeg"
+                    src="./logo.svg"
                     alt="97plantões"
                     className="w-14 h-auto block rounded-lg"
                   />

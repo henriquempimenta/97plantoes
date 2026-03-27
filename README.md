@@ -29,8 +29,8 @@ Site institucional da **97plantões**, a plataforma de plantões médicos do Bra
 │       ├── types.ts
 │       └── hooks/
 ├── public/                       # Assets estáticos
-│   ├── logo.jpeg
-│   ├── logo_transparent.png
+│   ├── logo.svg
+
 │   ├── doctor_using_the_app.jpg
 │   └── NoveSeteVideo.mp4
 ├── index.html
