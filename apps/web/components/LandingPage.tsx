@@ -733,7 +733,7 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
       >
         <div className="max-w-3xl w-full text-center mb-12 relative z-10">
           <div className="inline-block bg-white/20 text-white rounded-full px-5 py-2 text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm border border-white/20">
-            Disponível em breve na App Store & Google Play
+            Disponível na App Store & Google Play
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight drop-shadow-sm">
             Conectando a Saúde do Brasil
@@ -765,7 +765,9 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
             <div className="flex flex-col gap-4 w-full sm:w-auto">
               {/* App Store Button */}
               <a
-                href="#"
+                href="https://apps.apple.com/br/app/97plant%C3%B5es/id6760927669"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-black text-white px-5 py-2.5 rounded-xl transition-transform hover:scale-105 shadow-xl"
               >
                 <svg viewBox="0 0 384 512" className="w-8 h-8 fill-current"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
@@ -777,11 +779,12 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
 
               {/* Google Play Button */}
               <a
-                href="#"
+                href="https://play.google.com/store/apps/details?id=com.sante.n97plantoes"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-black text-white px-5 py-2.5 rounded-xl transition-transform hover:scale-105 shadow-xl"
               >
                 <svg viewBox="0 0 512 512" className="w-8 h-8">
-                  {/* Simplistic stylized colored playback triangle for Android */}
                   <path fill="#4CAF50" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
                   <path fill="#2196F3" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z" />
                   <path fill="#FFEB3B" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z" />
@@ -796,30 +799,45 @@ export default function LandingPageTemplate({ onGoToApp }: { onGoToApp: () => vo
           </div>
 
           {/* Right QR Code */}
+          {/* QR Codes — one for each store */}
           <div className="flex flex-col items-center relative z-10 w-full md:w-auto">
-            <div className="bg-white p-3 rounded-2xl shadow-xl mb-3">
-              {/* Dummy QR Code SVG using simple paths */}
-              <svg
-                viewBox="0 0 100 100"
-                className="w-40 h-40 md:w-48 md:h-48"
-                fill="#0A2540"
-              >
-                <rect width="100" height="100" fill="white" rx="8" />
-                {/* Large position markers */}
-                <path d="M10 10h24v24H10zM15 15h14v14H15zM18 18h8v8h-8z" />
-                <path d="M66 10h24v24H66zM71 15h14v14H71zM74 18h8v8h-8z" />
-                <path d="M10 66h24v24H10zM15 71h14v14H15zM18 74h8v8h-8z" />
-
-                {/* Alignment marker */}
-                <path d="M72 72h10v10H72zM75 75h4v4h-4z" />
-
-                {/* Data modules */}
-                <path d="M40 10h6v6h-6zM50 10h10v6H50zM40 20h14v6H40zM58 20h4v6h-4zM40 30h20v6H40zM10 40h14v6H10zM30 40h20v6H30zM56 40h34v6H56zM10 50h30v6H10zM44 50h12v6H44zM60 50h30v6H60zM40 66h16v6H40zM60 66h8v6h-8zM70 66h14v6H70zM40 76h6v6h-6zM50 76h18v6H50zM88 76h4v14h-4zM40 86h20v6H40zM66 86h6v6h-6z" />
-                <path d="M26 26h4v4h-4zM20 30h6v6h-6zM36 14h4v6h-4zM54 26h6v6h-6zM46 80h4v6h-4zM56 80h4v6h-4z" />
-                <path d="M68 56h4v4h-4zM80 56h4v4h-4zM64 46h4v4h-4zM84 46h4v4h-4z" />
-              </svg>
+            <div className="flex flex-col sm:flex-row gap-6">
+              {/* App Store QR */}
+              <div className="flex flex-col items-center">
+                <div className="bg-white p-3 rounded-2xl shadow-xl mb-2">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent('https://apps.apple.com/br/app/97plant%C3%B5es/id6760927669')}&color=0A2540&bgcolor=FFFFFF&margin=8`}
+                    alt="QR Code para App Store"
+                    className="w-36 h-36 md:w-44 md:h-44 rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex items-center gap-1.5 text-white text-sm font-medium tracking-wide">
+                  <svg viewBox="0 0 384 512" className="w-4 h-4 fill-current"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
+                  App Store
+                </div>
+              </div>
+              {/* Google Play QR */}
+              <div className="flex flex-col items-center">
+                <div className="bg-white p-3 rounded-2xl shadow-xl mb-2">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent('https://play.google.com/store/apps/details?id=com.sante.n97plantoes')}&color=0A2540&bgcolor=FFFFFF&margin=8`}
+                    alt="QR Code para Google Play"
+                    className="w-36 h-36 md:w-44 md:h-44 rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex items-center gap-1.5 text-white text-sm font-medium tracking-wide">
+                  <svg viewBox="0 0 512 512" className="w-4 h-4">
+                    <path fill="#4CAF50" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                    <path fill="#2196F3" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z" />
+                    <path fill="#FFEB3B" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z" />
+                    <path fill="#F44336" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                  </svg>
+                  Google Play
+                </div>
+              </div>
             </div>
-            <p className="text-white text-sm font-medium tracking-wide">Scan o QR Code</p>
           </div>
         </div>
       </section>
