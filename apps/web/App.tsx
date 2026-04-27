@@ -7,6 +7,7 @@ const SupportPage = lazy(() => import('./components/SupportPage'));
 const AboutPage = lazy(() => import('./components/AboutPage'));
 const EmailVerificationPage = lazy(() => import('./components/EmailVerificationPage'));
 const ResetPasswordPage = lazy(() => import('./components/ResetPasswordPage'));
+const DownloadRedirectPage = lazy(() => import('./components/DownloadRedirectPage'));
 
 const DelayedFallback = () => {
   const [show, setShow] = useState(false);
@@ -30,14 +31,22 @@ const DelayedFallback = () => {
 
 export default function App() {
   const [page, setPage] = useState(() => new URLSearchParams(window.location.search).get('page'));
+  const [pathname, setPathname] = useState(() => window.location.pathname);
 
   useEffect(() => {
-    const onLocationChange = () => setPage(new URLSearchParams(window.location.search).get('page'));
+    const onLocationChange = () => {
+      setPage(new URLSearchParams(window.location.search).get('page'));
+      setPathname(window.location.pathname);
+    };
     window.addEventListener('popstate', onLocationChange);
     return () => window.removeEventListener('popstate', onLocationChange);
   }, []);
 
   const renderPage = () => {
+    if (pathname === '/baixar' || page === 'baixar') {
+      return <DownloadRedirectPage />;
+    }
+
     if (page === 'verificar-email') {
       return <EmailVerificationPage />;
     }

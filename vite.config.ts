@@ -18,6 +18,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         suporte: path.resolve(__dirname, 'suporte.html'),
+        baixar: path.resolve(__dirname, 'baixar.html'),
       },
     },
   },
